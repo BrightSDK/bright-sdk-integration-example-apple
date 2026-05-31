@@ -27,6 +27,23 @@ apple/
 - A **BrightSDK API key** exported as `SDK_API_KEY` — see [obtain-api-key.md](https://brightsdk.github.io/bright-sdk-downloader-rs/obtain-api-key.html)
 - An internet connection — the SDK zip is downloaded from the CDN on first run
 
+## API key
+
+The integration tool requires a **BrightSDK API key** passed via the `SDK_API_KEY` environment variable.
+
+```sh
+export SDK_API_KEY=<your-api-key>
+```
+
+**How to get a key:**
+
+1. Log in at [bright-sdk.com](https://bright-sdk.com)
+2. Go to **Settings → Company profile → API keys**
+3. Copy an existing key or generate a new one
+
+> Full step-by-step guide with screenshots:\
+> <https://brightsdk.github.io/bright-sdk-downloader-rs/obtain-api-key.html>
+
 ## Quick start — example app
 
 ### 1. Install SDK and patch the Xcode project
@@ -106,8 +123,7 @@ Copy the platform subfolder (`ios/`, `tvos/`, or `macos/`) next to your own `.xc
 {
     "workdir": "..",
     "libs_dir": "BrightSDK",
-    "sdk_ver": "latest",
-    "sdk_url": "https://cdn.bright-sdk.com/static/brd_sdk_ios-SDK_VER.zip"
+    "sdk_ver": "latest"
 }
 ```
 
@@ -116,7 +132,6 @@ Copy the platform subfolder (`ios/`, `tvos/`, or `macos/`) next to your own `.xc
 | `workdir`         | Directory that contains (or is a parent of) your `.xcodeproj`. The tool searches up to 3 levels deep. |
 | `libs_dir`        | Directory where the framework will be extracted, relative to `workdir`.                               |
 | `sdk_ver`         | `"latest"` or a specific version string, e.g. `"1.500.0"`.                                            |
-| `sdk_url`         | CDN URL template — `SDK_VER` is replaced with the resolved version.                                   |
 | `sdk_service_dir` | _macOS only_ — directory for `net_updater.app`, relative to `workdir`.                                |
 
 Then run:
